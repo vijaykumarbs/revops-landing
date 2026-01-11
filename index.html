@@ -2,93 +2,135 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Revenue Leak Diagnostic | vijayebhava</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vijay E Bhava | Fix Revenue Leaks</title>
 
   <style>
     :root {
-      --black: #0b0b0b;
-      --gray: #666;
-      --light: #f7f7f7;
+      --bg: #0a0b10;
+      --surface: #11131a;
+      --border: #1e2130;
+      --text: #f5f6fa;
+      --muted: #a0a3b1;
+      --accent: #6ee7b7;
+      --danger: #f87171;
     }
 
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
     body {
-      margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-      color: var(--black);
-      background: #ffffff;
-      line-height: 1.5;
+      font-family: Inter, system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
     }
 
     section {
-      padding: 80px 24px;
+      padding: 96px 24px;
+      border-bottom: 1px solid var(--border);
     }
 
     .container {
-      max-width: 960px;
-      margin: auto;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 16px;
     }
 
     h1 {
-      font-size: 42px;
-      line-height: 1.2;
-      margin-bottom: 16px;
+      font-size: clamp(40px, 6vw, 64px);
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 24px;
     }
 
     h2 {
-      font-size: 28px;
-      margin-bottom: 16px;
+      font-size: clamp(28px, 4vw, 42px);
+      margin-bottom: 20px;
+    }
+
+    h3 {
+      font-size: 22px;
+      margin-bottom: 12px;
     }
 
     p {
+      max-width: 720px;
       font-size: 18px;
-      color: var(--gray);
-      margin-bottom: 16px;
+      color: var(--muted);
+      margin-bottom: 20px;
     }
 
-    .cta {
-      display: inline-block;
+    .highlight { color: var(--accent); }
+
+    .cta-row {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 32px;
+    }
+
+    .btn {
       padding: 14px 24px;
-      background: var(--black);
-      color: #fff;
-      text-decoration: none;
+      font-size: 15px;
       font-weight: 600;
-      border-radius: 6px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      text-decoration: none;
     }
 
-    .cta:hover {
-      opacity: 0.9;
+    .btn.primary {
+      background: var(--accent);
+      color: #0a0b10;
+      border-color: transparent;
     }
 
-    /* HERO */
-    #hero {
-      background: var(--light);
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-top: 40px;
     }
 
-    #rotating-value {
-      min-height: 48px;
-      font-size: 18px;
-      margin-top: 12px;
-      transition: opacity 0.4s ease, transform 0.4s ease;
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 28px;
     }
 
-    .fade-out {
+    ul { list-style: none; }
+    li {
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 16px;
+    }
+    li:last-child { border-bottom: none; }
+
+    .fade {
       opacity: 0;
-      transform: translateY(6px);
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
     }
-
-    .fade-in {
+    .fade.visible {
       opacity: 1;
       transform: translateY(0);
     }
 
-    /* SECTIONS */
-    .card {
-      background: #fff;
-      border: 1px solid #eee;
-      border-radius: 8px;
-      padding: 24px;
-      margin-top: 24px;
+    footer {
+      padding: 64px 24px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
     }
 
     /* MOBILE STICKY CTA */
@@ -97,9 +139,8 @@
     }
 
     @media (max-width: 768px) {
-      h1 {
-        font-size: 32px;
-      }
+      section { padding: 72px 20px; }
+      p { font-size: 16px; }
 
       .mobile-cta {
         display: block;
@@ -107,16 +148,17 @@
         bottom: 0;
         left: 0;
         right: 0;
-        background: var(--black);
-        padding: 14px;
+        background: var(--accent);
         text-align: center;
-        z-index: 1000;
+        padding: 14px;
+        z-index: 999;
       }
 
       .mobile-cta a {
-        color: #fff;
-        font-weight: 600;
+        color: #0a0b10;
+        font-weight: 700;
         text-decoration: none;
+        font-size: 16px;
       }
 
       body {
@@ -128,138 +170,149 @@
 
 <body>
 
-  <!-- HERO -->
-  <section id="hero">
-    <div class="container">
-      <h1>
-        Fix Revenue Leaks Before You Hire More People or Buy More Tools
-      </h1>
-
-      <p id="rotating-value" class="fade-in">
-        I help Indian B2B and manufacturing founders identify and fix revenue leaks before hiring more people or changing tools.
-      </p>
-
+<!-- HERO -->
+<section>
+  <div class="container fade">
+    <div class="eyebrow">RevOps for Founder-Led Businesses</div>
+    <h1>
+      Deals don’t die loudly.<br/>
+      <span class="highlight">They decay quietly.</span>
+    </h1>
+    <p>
+      Quotes go unanswered. Orders stall. Cash arrives later than expected.
+      By the time it’s visible, the damage is done.
+    </p>
+    <p>
+      I help Indian B2B and manufacturing founders
+      <strong class="highlight">identify and fix revenue leaks</strong>
+      before hiring more people or changing tools.
+    </p>
+    <div class="cta-row">
+      <!-- FIXED: Direct booking, no scroll -->
       <a
-        class="cta"
         href="https://calendar.app.google/3VrssGuYyz3ocg2y7"
         target="_blank"
         rel="noopener"
+        class="btn primary"
       >
         Request Revenue Leak Diagnostic
       </a>
+
+      <!-- Secondary CTA remains informational -->
+      <a href="#ladder" class="btn">How This Engagement Works</a>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- PROBLEM -->
-  <section>
-    <div class="container">
-      <h2>The Problem Most Founders Miss</h2>
-      <p>
-        Revenue doesn’t usually drop because of effort.  
-        It leaks quietly through missed follow-ups, unclear ownership, broken handoffs, and CRM decay.
-      </p>
-      <p>
-        Hiring more salespeople or switching tools often makes this worse.
-      </p>
-    </div>
-  </section>
-
-  <!-- OFFER -->
-  <section>
-    <div class="container">
-      <h2>The Revenue Leak Diagnostic</h2>
-
+<!-- RECOGNITION -->
+<section>
+  <div class="container fade">
+    <h2>This usually shows up as</h2>
+    <div class="grid">
       <div class="card">
-        <p>
-          A focused diagnostic sprint to identify where qualified revenue is being lost — and what to fix first.
-        </p>
-        <p>
-          No dashboards. No long-term commitment. No tool migration.
-        </p>
-
-        <a
-          class="cta"
-          href="https://calendar.app.google/3VrssGuYyz3ocg2y7"
-          target="_blank"
-          rel="noopener"
-        >
-          Request Diagnostic Call
-        </a>
+        <ul>
+          <li>“We sent the quote — waiting”</li>
+          <li>No owner for follow-ups</li>
+          <li>Sales vs Ops finger-pointing</li>
+        </ul>
+      </div>
+      <div class="card">
+        <ul>
+          <li>Orders confirmed but delayed</li>
+          <li>Cash flow ≠ bookings</li>
+          <li>Founder finds issues too late</li>
+        </ul>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ABOUT -->
-  <section>
-    <div class="container">
-      <h2>Why Me</h2>
-      <p>
-        I work with founder-led B2B and manufacturing teams running outbound-first sales.
-      </p>
-      <p>
-        Across teams, the failure pattern is the same: revenue leaks appear before founders realize they exist.
-      </p>
-      <p>
-        This diagnostic exists to surface those leaks early — before scale multiplies the damage.
-      </p>
+<!-- AUTHORITY -->
+<section>
+  <div class="container fade">
+    <h2>What I consistently see</h2>
+    <p>
+      Revenue rarely breaks because of one big failure.
+      It breaks because no one owns the space between steps.
+    </p>
+    <div class="grid">
+      <div class="card"><p>Interest without ownership</p></div>
+      <div class="card"><p>Handoffs without accountability</p></div>
+      <div class="card"><p>Visibility only at month-end</p></div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- FINAL CTA -->
-  <section>
-    <div class="container">
-      <h2>Start With Clarity</h2>
-      <p>
-        One call. Clear diagnosis. No pressure to continue.
-      </p>
+<!-- LADDER -->
+<section id="ladder">
+  <div class="container fade">
+    <h2>The Engagement Ladder</h2>
+    <p>This is not open-ended consulting. Each step earns the next.</p>
 
+    <div class="grid">
+      <div class="card">
+        <h3>1. Revenue Leak Fix Sprint</h3>
+        <p>30 days. Fix the top 2 revenue leaks.</p>
+      </div>
+      <div class="card">
+        <h3>2. RevOps Control Retainer</h3>
+        <p>Ongoing visibility and discipline.</p>
+      </div>
+      <div class="card">
+        <h3>3. RevOps System Product</h3>
+        <p>Workflows and SOPs your team owns.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIAGNOSTIC -->
+<section id="diagnostic">
+  <div class="container fade">
+    <h2>Revenue Leak Diagnostic</h2>
+    <p>
+      30–45 minute focused call.
+      We map where revenue decays and decide whether a sprint makes sense.
+    </p>
+    <div class="cta-row">
+      <!-- FIXED: Correct link -->
       <a
-        class="cta"
         href="https://calendar.app.google/3VrssGuYyz3ocg2y7"
         target="_blank"
         rel="noopener"
+        class="btn primary"
       >
-        Book Diagnostic Call
+        Request Diagnostic Call
       </a>
     </div>
-  </section>
-
-  <!-- MOBILE STICKY CTA -->
-  <div class="mobile-cta">
-    <a
-      href="https://calendar.app.google/3VrssGuYyz3ocg2y7"
-      target="_blank"
-      rel="noopener"
-    >
-      Request Diagnostic Call
-    </a>
   </div>
+</section>
 
-  <!-- VALUE PROP ROTATION SCRIPT -->
-  <script>
-    const valueProps = [
-      "I help Indian B2B founders find where qualified outbound leads silently die.",
-      "I help manufacturing founders fix follow-up gaps without adding headcount.",
-      "I help teams stop revenue loss caused by CRM neglect and ownership gaps.",
-      "I help founders stabilize revenue before scaling sales teams.",
-      "I help outbound-first companies recover missed deals hiding in plain sight."
-    ];
+<footer>
+  © 2026 Vijayebhava • RevOps Systems<br/>
+  vijayeebhava.com
+</footer>
 
-    const el = document.getElementById("rotating-value");
-    let i = 0;
+<!-- MOBILE CTA -->
+<div class="mobile-cta">
+  <a
+    href="https://calendar.app.google/3VrssGuYyz3ocg2y7"
+    target="_blank"
+    rel="noopener"
+  >
+    Request Diagnostic Call
+  </a>
+</div>
 
-    setInterval(() => {
-      el.classList.remove("fade-in");
-      el.classList.add("fade-out");
+<script>
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) e.target.classList.add('visible');
+    });
+  }, { threshold: 0.15 });
 
-      setTimeout(() => {
-        i = (i + 1) % valueProps.length;
-        el.textContent = valueProps[i];
-        el.classList.remove("fade-out");
-        el.classList.add("fade-in");
-      }, 400);
-    }, 3600);
-  </script>
+  document.querySelectorAll('.fade').forEach(el => observer.observe(el));
+</script>
 
 </body>
 </html>

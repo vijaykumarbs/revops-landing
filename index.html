@@ -165,6 +165,23 @@
         padding-bottom: 72px;
       }
     }
+    .rotating-text {
+  display: inline-block;
+  position: relative;
+}
+
+.rotating-text.fade-out {
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.rotating-text.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
   </style>
 </head>
 
@@ -183,9 +200,11 @@
       By the time it’s visible, the damage is done.
     </p>
     <p>
-      I help Indian B2B and manufacturing founders
-      <strong class="highlight">identify and fix revenue leaks</strong>
-      before hiring more people or changing tools.
+    I help B2B and manufacturing founders
+    <strong class="highlight rotating-text" id="rotatingText">
+    identify and fix revenue leaks
+    </strong>
+    before hiring more people or changing tools.
     </p>
     <div class="cta-row">
       <!-- FIXED: Direct booking, no scroll -->
@@ -312,6 +331,32 @@
   }, { threshold: 0.15 });
 
   document.querySelectorAll('.fade').forEach(el => observer.observe(el));
+</script>
+
+  <script>
+  const propositions = [
+    "identify and fix revenue leaks",
+    "stop deals from stalling after interest",
+    "recover revenue lost in handoffs and follow-ups",
+    "bring visibility between sales, ops, and cash",
+    "fix revenue decay before scaling teams",
+    "remove founder dependency from revenue flow"
+  ];
+
+  const el = document.getElementById("rotatingText");
+  let index = 0;
+
+  setInterval(() => {
+    el.classList.remove("fade-in");
+    el.classList.add("fade-out");
+
+    setTimeout(() => {
+      index = (index + 1) % propositions.length;
+      el.textContent = propositions[index];
+      el.classList.remove("fade-out");
+      el.classList.add("fade-in");
+    }, 300);
+  }, 1000);
 </script>
 
 </body>

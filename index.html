@@ -328,7 +328,7 @@
     entries.forEach(e => {
       if (e.isIntersecting) e.target.classList.add('visible');
     });
-  }, { threshold: 0.15 });
+  }, { threshold: 0.5 });
 
   document.querySelectorAll('.fade').forEach(el => observer.observe(el));
 </script>
@@ -337,8 +337,8 @@
   const propositions = [
     "identify and fix revenue leaks",
     "stop deals from stalling after interest",
-    "recover revenue lost in handoffs and follow-ups",
-    "bring visibility between sales, ops, and cash",
+    "recover revenue lost in handoffs ",
+    "bring visibility between teams",
     "fix revenue decay before scaling teams",
     "remove founder dependency from revenue flow"
   ];

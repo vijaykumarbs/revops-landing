@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vijay E Bhava | Fix Revenue Leaks</title>
+
+  <style>
+    :root {
+      --bg: #0a0b10;
+      --surface: #11131a;
+      --border: #1e2130;
+      --text: #f5f6fa;
+      --muted: #a0a3b1;
+      --accent: #6ee7b7;
+      --danger: #f87171;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: Inter, system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    section {
+      padding: 96px 24px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: clamp(40px, 6vw, 64px);
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 24px;
+    }
+
+    h2 {
+      font-size: clamp(28px, 4vw, 42px);
+      margin-bottom: 20px;
+    }
+
+    h3 {
+      font-size: 22px;
+      margin-bottom: 12px;
+    }
+
+    p {
+      max-width: 720px;
+      font-size: 18px;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    .highlight { color: var(--accent); }
+
+    .cta-row {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 32px;
+    }
+
+    .btn {
+      padding: 14px 24px;
+      font-size: 15px;
+      font-weight: 600;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .btn.primary {
+      background: var(--accent);
+      color: #0a0b10;
+      border-color: transparent;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 28px;
+    }
+
+    ul { list-style: none; }
+    li {
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 16px;
+    }
+    li:last-child { border-bottom: none; }
+
+    .fade {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    footer {
+      padding: 64px 24px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    @media (max-width: 768px) {
+      section { padding: 72px 20px; }
+      p { font-size: 16px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<section>
+  <div class="container fade">
+    <div class="eyebrow">RevOps for Founder-Led Businesses</div>
+    <h1>
+      Deals don’t die loudly.<br/>
+      <span class="highlight">They decay quietly.</span>
+    </h1>
+    <p>
+      Quotes go unanswered. Orders stall. Cash arrives later than expected.
+      By the time it’s visible, the damage is done.
+    </p>
+    <p>
+      I help Indian B2B and manufacturing founders
+      <strong class="highlight">identify and fix revenue leaks</strong>
+      before hiring more people or changing tools.
+    </p>
+    <div class="cta-row">
+      <a href="#diagnostic" class="btn primary">Request Revenue Leak Diagnostic</a>
+      <a href="#ladder" class="btn">How This Engagement Works</a>
+    </div>
+  </div>
+</section>
+
+<!-- RECOGNITION -->
+<section>
+  <div class="container fade">
+    <h2>This usually shows up as</h2>
+    <div class="grid">
+      <div class="card">
+        <ul>
+          <li>“We sent the quote — waiting”</li>
+          <li>No owner for follow-ups</li>
+          <li>Sales vs Ops finger-pointing</li>
+        </ul>
+      </div>
+      <div class="card">
+        <ul>
+          <li>Orders confirmed but delayed</li>
+          <li>Cash flow ≠ bookings</li>
+          <li>Founder finds issues too late</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AUTHORITY WITHOUT TESTIMONIALS -->
+<section>
+  <div class="container fade">
+    <h2>What I consistently see</h2>
+    <p>
+      Revenue rarely breaks because of one big failure.
+      It breaks because no one owns the space between steps.
+    </p>
+    <div class="grid">
+      <div class="card">
+        <p>Interest without ownership</p>
+      </div>
+      <div class="card">
+        <p>Handoffs without accountability</p>
+      </div>
+      <div class="card">
+        <p>Visibility only at month-end</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LADDER -->
+<section id="ladder">
+  <div class="container fade">
+    <h2>The Engagement Ladder</h2>
+    <p>
+      This is not open-ended consulting.
+      Each step earns the next.
+    </p>
+
+    <div class="grid">
+      <div class="card">
+        <h3>1. Revenue Leak Fix Sprint</h3>
+        <p>
+          30 days. Identify and fix the top 2 revenue leaks.
+          No tool replacement. No team reshuffle.
+        </p>
+        <p><strong>Typical investment:</strong> ₹1.5L–₹3L</p>
+      </div>
+
+      <div class="card">
+        <h3>2. RevOps Control Retainer</h3>
+        <p>
+          Ongoing visibility, alerts, and discipline.
+          Prevents regression once leaks are fixed.
+        </p>
+        <p><strong>Monthly:</strong> ₹50k–₹1L</p>
+      </div>
+
+      <div class="card">
+        <h3>3. RevOps System Product</h3>
+        <p>
+          Standardized workflows, dashboards, and SOPs
+          your team can run without me.
+        </p>
+        <p><strong>Outcome:</strong> Independence</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FIT -->
+<section>
+  <div class="container fade">
+    <h2>Who this is for (and who it isn’t)</h2>
+    <div class="grid">
+      <div class="card">
+        <h3 class="highlight">Good Fit</h3>
+        <ul>
+          <li>₹5–50 Cr ARR</li>
+          <li>B2B / Manufacturing / Distribution</li>
+          <li>Founder feels revenue fragility</li>
+          <li>Urgency this quarter</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3 style="color:var(--danger)">Not a Fit</h3>
+        <ul>
+          <li>Pre-revenue</li>
+          <li>Looking for tools or CRM advice</li>
+          <li>No budget pressure</li>
+          <li>Exploration mode</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIAGNOSTIC -->
+<section id="diagnostic">
+  <div class="container fade">
+    <h2>Revenue Leak Diagnostic</h2>
+    <p>
+      30–45 minute focused call.
+      We map where revenue decays and decide
+      whether a sprint makes sense.
+    </p>
+    <p>
+      I take a limited number of sprints each month.
+      If pricing already feels uncomfortable, don’t book.
+    </p>
+    <div class="cta-row">
+      <a href="https://calendly.com/your-link-here" class="btn primary">
+        Request Diagnostic Call
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 Vijay E Bhava • RevOps Systems<br/>
+  vijayeebhava.com
+</footer>
+
+<script>
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) e.target.classList.add('visible');
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.fade').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
